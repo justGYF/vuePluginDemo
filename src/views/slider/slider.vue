@@ -3,8 +3,6 @@
         <div class="sliderBox">
             <Slider :option='sliderData'></Slider>
         </div>
-        <el-radio v-model="radio" label="1">备选项</el-radio>
-        <el-radio v-model="radio" label="2">备选项</el-radio>
     </div>
 </template>
 
@@ -18,7 +16,6 @@
     export default {
         data () {
             return {
-                radio: '1',
                 message: '',
                 sliderData: {
                     width: 200,

@@ -1,21 +1,8 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
+    <p>{{ msg }}</p>
     <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
+      <li v-for="(item, index) in linkData" @click="linkRouter(index)">{{item.name}}</li>
     </ul>
   </div>
 </template>
@@ -25,7 +12,18 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Vue Plugin Demo Link',
+      linkData: [
+        { name: '日历', value: '/calendar' },
+        { name: 'echarts', value: '/echartsDemo' },
+        { name: '滑动方向', value: '/slider' },
+        { name: 'css画树', value: '/treeDom' }
+      ]
+    }
+  },
+  methods: {
+    linkRouter (val) {
+      this.$router.push({path: this.linkData[val].value});
     }
   }
 }
@@ -33,20 +31,66 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+
+p {
   font-weight: normal;
+  width: auto;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  font-size: 30px;
+  margin: 10px auto;
+  display: block;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
+  width: 1200px;
+  height: 300px;
+  margin: 10px auto;
 }
 
 li {
-  display: inline-block;
-  margin: 0 10px;
+  position: relative;
+  float: left;
+  width: 18%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 15px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000 transparent #000 transparent;
+  padding: 0;
+  margin-left: 5%;
+  cursor: pointer;
 }
-
+li:after {
+  border: solid transparent;
+  content: ' ';
+  height: 0;
+  left: 100%;
+  top: 0;
+  position: absolute;
+  width: 0;
+  border-width: 15px;
+  border-left-color: #000;
+}
+li:before {
+  border: solid transparent;
+  content: ' ';
+  height: 0;
+  left: -30px;
+  top: 0;
+  position: absolute;
+  width: 0;
+  border-width: 15px;
+  border-right-color: #000;
+}
+li:hover {
+  text-shadow: 1px 1px 1px #ccc;
+}
 a {
   color: #42b983;
 }
