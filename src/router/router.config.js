@@ -3,6 +3,7 @@ import EchartsDemo from '../views/echarts/echartsDemo.vue'
 import TreeDom from '../views/treeDom/treeDom.vue'
 import Slider from '../views/slider/slider.vue'
 import Calendar from '../views/calendar/index.vue'
+import TransferTree from '../views/transferTree/index.vue'
 
 const allRouter = [
     {
@@ -33,6 +34,11 @@ const allRouter = [
         path: '/treeDom',
         name: 'treeDom',
         component: TreeDom
+    },
+    {
+        path: '/transferTree',
+        name: 'TransferTree',
+        component: TransferTree
     }
 ]
 
