@@ -33,7 +33,7 @@
                         // 选中样式
                         emphasis: {
                             borderWidth:1,
-                            areaColor: '#F4E925',
+                            areaColor: '#747134',
                             label: {
                                 show: false,
                                 textStyle: {
@@ -64,6 +64,11 @@
                     let obj = {}
                     obj.name = item;
                     obj.selected = true;
+                    obj.itemStyle = {
+                        emphasis: {
+                            areaColor: '#F4E925'
+                        }
+                    }
                     arr.push(obj)
                 })
                 this.buildData(arr);
