@@ -4,6 +4,7 @@ import TreeDom from '../views/treeDom/treeDom.vue'
 import Slider from '../views/slider/slider.vue'
 import Calendar from '../views/calendar/index.vue'
 import TransferTree from '../views/transferTree/index.vue'
+import Footprint from '../views/footprint/index.vue'
 
 const allRouter = [
     {
@@ -39,6 +40,11 @@ const allRouter = [
         path: '/transferTree',
         name: 'TransferTree',
         component: TransferTree
+    },
+    {
+        path: '/footprint',
+        name: 'Footprint',
+        component: Footprint
     }
 ]
 

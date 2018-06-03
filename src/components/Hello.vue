@@ -17,7 +17,8 @@ export default {
         { name: '日历', value: '/calendar' },
         { name: 'echarts', value: '/echartsDemo' },
         { name: '滑动方向', value: '/slider' },
-        { name: 'css画树', value: '/treeDom' }
+        { name: 'css画树', value: '/treeDom' },
+        { name: '足迹-地图', value: '/footprint' }
       ]
     }
   },
@@ -64,6 +65,7 @@ li {
   border-color: #000 transparent #000 transparent;
   padding: 0;
   margin-left: 5%;
+  margin-top: 15px;
   cursor: pointer;
 }
 li:after {

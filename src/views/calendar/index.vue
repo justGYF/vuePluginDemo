@@ -23,6 +23,11 @@
                 >{{item}}</li>
             </ul>   
         </div>
+        <div class="ss-aa">
+            <div class="ss-aa__bb">
+                <div class="ss-aa__bb--cc"></div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -139,7 +144,24 @@
     }
 </script>
 
-<style>
+<style scoped>
+    @component-namespace ss {
+        @b aa {
+            width: 300px;
+            height: 100px;
+            background: red;
+            @e bb {
+                width: 200px;
+                height: 200px;
+                background: green;
+                @m cc {
+                    width: 100px;
+                    height: 100px;
+                    background: #ccc;
+                }
+            }
+        }
+    }
     .bigBox {
         width: 650px;
         height: 300px;
