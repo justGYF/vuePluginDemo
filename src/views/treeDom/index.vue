@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import treeDomSon from '../../components/treeDomCom/treeDomCom'
+    import treeDomSon from '@/components/treeDomCom/treeDomCom'
     export default {
         name: 'treeDom',
         components: {

@@ -21,7 +21,8 @@
     "postcss-loader": "^2.1.5",
     "saladcss-bem": "0.0.2",
     "vue": "^2.5.16",
-    "vue-router": "^2.6.0"
+    "vue-router": "^2.6.0",
+    "vuex": "^3.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.6",

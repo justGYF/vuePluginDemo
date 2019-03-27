@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-    import TransferTree from '../../components/transfer-tree'
+    import TransferTree from '@/components/transfer-tree'
     export default {
         data () {
             return {

@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="navs">
     <p>{{ msg }}</p>
     <ul>
       <li v-for="(item, index) in linkData" @click="linkRouter(index)">{{item.name}}</li>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'hello',
+  name: 'navs',
   data () {
     return {
       msg: 'Vue Plugin Demo Link',
@@ -18,9 +18,12 @@ export default {
         { name: 'echarts', value: '/echartsDemo' },
         { name: '滑动方向', value: '/slider' },
         { name: 'css画树', value: '/treeDom' },
-        { name: '足迹-地图', value: '/footprint' }
+        { name: '足迹-地图', value: '/footprint' },
+        { name: '穿梭框', value: '/TransferTree'}
       ]
     }
+  },
+  mounted () {
   },
   methods: {
     linkRouter (val) {
@@ -96,4 +99,5 @@ li:hover {
 a {
   color: #42b983;
 }
+
 </style>

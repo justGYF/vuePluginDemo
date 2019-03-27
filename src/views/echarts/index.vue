@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import { buildEcharts } from '../../components/echartsTest/buildEcharts'
+    import { buildEcharts } from '@/components/echartsTest/buildEcharts'
     export default {
         name: 'echarts',
         data () {

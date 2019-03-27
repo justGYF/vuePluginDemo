@@ -21,4 +21,16 @@ const router = new Router({
     routes
 })
 
+router.beforeEach((to, from, next) => {
+    if (to.path !== '/') {
+        window.$VUEStore.dispatch('login/changeHomeButStatus', { homeBut: true })
+    } else {
+        // 荷载形式分发
+        window.$VUEStore.dispatch('login/changeHomeButStatus', { homeBut: false })
+        // 对象形式分发
+        // window.$VUEStore.dispatch({ type: 'login/changeHomeButStatus', homeBut: false })
+    }
+    next();
+})
+
 export default router
