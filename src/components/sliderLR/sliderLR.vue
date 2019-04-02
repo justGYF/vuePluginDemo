@@ -9,7 +9,7 @@
                     :style="liStyle">
                     <img :src="item" alt="">
                 </li>
-             </ul>    
+             </ul>
         </div>
         <div>{{message}}</div>
     </div>
@@ -96,6 +96,8 @@
                 }
             },
             mouseDown (e) {
+                // 拖动img元素会有阴影，属于默认行为，preventDefault取消默认行为
+                e.preventDefault()
                 this.clientNum = e.clientX
                 this.upFlag = 'ok';
             },

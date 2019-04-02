@@ -1,6 +1,5 @@
 <template>
-    <div class="footprintMap" ref="fpMap">
-        
+    <div class="footprintMap" ref="fpMap" :style="mapStyle">
     </div>
 </template>
 
@@ -57,6 +56,14 @@
 
             }
         },
+        computed: {
+            mapStyle () {
+                return {
+                    height: '100%',
+                    width: '100%'
+                }
+            }
+        },
         watch: {
             option (val) {
                 let arr = [];
@@ -93,8 +100,4 @@
 </script>
 
 <style scoped>
-    .footprintMap {
-        width: 100%;
-        height: 100%;
-    }
 </style>

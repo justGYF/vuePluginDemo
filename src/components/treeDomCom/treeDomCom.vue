@@ -1,99 +1,72 @@
 <template>
-    <div id="treeDomSon">
-        <ul id="uls">
-            <li>
-                <p>中国</p>
-                <ul>
-                    <li><p>北京</p></li>
-                    <li><p>广东省</p>
-                        <ul>
-                            <li><p>广州市</p></li>
-                            <li><p>韶关市</p></li>
-                        </ul>
-                    </li>
-                    <li><p>海南省</p>
-                        <ul>
-                            <li><p>海口市</p>
-                                <ul>
-                                    <li><p>美兰区</p></li>
-                                    <li><p>龙华区</p></li>
-                                    <li><p>秀英区</p></li>
-                                    <li><p>琼山区</p></li>
-                                </ul>
-                            </li>
-                            <li><p>三亚市</p></li>
-                        </ul>
-                    </li>
-                    <li><p>安徽省</p>
-                        <ul>
-                            <li><p>合肥市</p></li>
-                            <li><p>安庆市</p></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li><p>UK</p>
-                <ul>
-                    <li><p>英格兰</p></li>
-                    <li><p>威尔士</p></li>
-                </ul>
-            </li>
+    <!-- 递归调用自身，树形组件 -->
+    <li class="lis" status="true">
+        <p @click.stop="changeHeight">{{treeData.name}}</p>
+        <ul v-if="treeData.children && treeData.children.length">
+            <!-- 在这里引用treeDomSon自身，完成递归操作 -->
+          <treeDomSon :treeData="treeData" v-for="(treeData, i) of treeData.children" :key="i"></treeDomSon>
         </ul>
-    </div>
+    </li>
 </template>
 
 <script>
     export default {
         name: 'treeDomSon',
-        props: ['option'],
+        props: {
+            option: {
+                type: Object,
+                default: () => {}
+            },
+            treeData: {
+                type: Object,
+                default: () => {}
+            }
+        },
         data () {
             return {
             }
         },
         mounted () {
-            this.active();
-            this.styleLi();
+            // 因为递归, 循环执行mounted, option为undefined, 需做如此处理
+            if (this.option) {
+                this.styleLi();
+            }
         },
         methods: {
-            active () {
-                for (var i = 0; i < $('li').length; i++) {
-                    $('li').eq(i).attr('status', 'true');
-                }
-                for (var i = 0; i < $('p').length; i++) {
-                    $('p').eq(i).attr('type', 'isP');
-                }
-                $('#uls').on('click', function (e) {
-                    var e = e || window.event;
-                    if ($(e.target).attr('type') === 'isP') {
-                        if ($(e.target).parent().attr('status') === 'true') {
-                            $(e.target).parent().attr('status', false);
-                            $(e.target).parent().children('ul').addClass('aa');              
-                        } else {
-                            $(e.target).parent().attr('status', true);
-                            $(e.target).parent().children('ul').removeClass('aa');
-                        }
-                    }
-                })                
-            },
             styleLi () {
                 if (this.option.cssLi) {
-                    $('li').css(this.option.cssLi);
+                    $('#uls li').css(this.option.cssLi);
                 } else {
                     return 0;
                 }
                 if (this.option.cssP) {
-                    $('p').css(this.option.cssP);
+                    $('.lis p').css(this.option.cssP);
                     if (this.option.cssP['line-height']) {
                         var heights = parseInt(this.option.cssP['line-height']) / 2
-                        console.log(heights)
-                        console.log(this.option.cssP['margin'])
                     }
                     // 选取不到伪类元素
-                    $('li::before').css({
+                    $('.lis::before').css({
                         height: heights + 'px'
                     })
                 } else {
                     return 0;
+                }
+            },
+
+            // 点击折叠，展开 --- 原生方式操作dom
+            // 因为不方便统一数据驱动处理 --- status的值
+            changeHeight (e) {
+                let uls = e.target.parentNode.getElementsByTagName('ul');
+                if (e.target.parentNode.getAttribute('status') === 'true') {
+                    e.target.parentNode.setAttribute('status', false)
+                    for (let i = 0; i < uls.length; i++) {
+                        uls.item(i).classList.add('aa')
+                    }
+                } else {
+                    e.target.parentNode.setAttribute('status', true)
+                    for (let i = 0; i < uls.length; i++) {
+                        uls.item(i).classList.remove('aa')
+                    }
                 }
             }
         }
@@ -101,12 +74,8 @@
 </script>
 
 <style scoped>
-    html, body {
-        margin: 0;
-        padding: 0;
-    }
     ul {
-        margin: 0;
+        padding-left: 40px;
     }
     li {
         width: 200px;

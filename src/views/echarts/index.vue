@@ -65,6 +65,7 @@
     #fat {
         width: 1000px;
         height: 500px;
+        margin: 0 auto;
     }
     #echarts {
         width: 800px;

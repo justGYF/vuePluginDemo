@@ -22,11 +22,13 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-    if (to.path !== '/') {
-        window.$VUEStore.dispatch('login/changeHomeButStatus', { homeBut: true })
+    if (to.path === '/') {
+        window.$VUEStore.dispatch('login/changeHomeButStatus', { homeBut: false })
+        window.$VUEStore.dispatch('login/changeHomeTitle', { title: 'Vue Plugin Demo Link'})
     } else {
         // 荷载形式分发
-        window.$VUEStore.dispatch('login/changeHomeButStatus', { homeBut: false })
+        window.$VUEStore.dispatch('login/changeHomeButStatus', { homeBut: true })
+        window.$VUEStore.dispatch('login/changeHomeTitle', { title: to.name })
         // 对象形式分发
         // window.$VUEStore.dispatch({ type: 'login/changeHomeButStatus', homeBut: false })
     }

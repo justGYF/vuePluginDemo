@@ -1,7 +1,7 @@
 <template>
     <div class="mapBox">
-        <el-row style="width: 100%; height: 100%;">
-            <el-col :span="12">
+        <el-row style="height: 100%;">
+            <el-col :span="11">
                 <div class="cityChoose">
                     <el-checkbox border :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
                     <div style="margin: 5px 0;"></div>
@@ -11,7 +11,7 @@
                     <el-button type="success" @click="submitData">提交足迹</el-button>
                 </div>
             </el-col>
-            <el-col :span="12" class="footprintMap">
+            <el-col :span="11" class="footprintMap">
                 <Footprint :option="selectData"></Footprint>
             </el-col>
         </el-row>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-    import Footprint from '../../components/footprintMap'
+    import Footprint from '@/components/footprintMap'
     const citys = [ '北京', '天津', '上海', '重庆', '河北', '山西', '辽宁', '吉林',
                 '黑龙江', '江苏', '浙江', '安徽', '福建', '江西', '山东', '河南', '湖北',
                 '湖南', '广东', '海南', '四川', '贵州', '云南', '陕西', '甘肃', '青海',
@@ -58,11 +58,10 @@
 <style scoped>
     .mapBox {
         width: 100%;
-        height: 100%;
+        height: 600px;
     }
     .cityChoose {
         width: 80%;
-        height: 200px;
         margin: 0 auto;
     }
     .cityChoose .el-checkbox-group .el-checkbox.is-bordered {

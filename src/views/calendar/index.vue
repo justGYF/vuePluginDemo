@@ -15,18 +15,9 @@
                 <p class="week" v-for="item in title">{{item}}</p>
                 <li @click="showClickDay(index)"
                     v-for="(item, index) in days"
-                    :class="{
-                        'days': true,
-                        'high': index - empty === new Date().getDate(),
-                        'highLess': index === clickIndex
-                    }"
+                    :class="boxStyle(index)"
                 >{{item}}</li>
             </ul>   
-        </div>
-        <div class="ss-aa">
-            <div class="ss-aa__bb">
-                <div class="ss-aa__bb--cc"></div>
-            </div>
         </div>
     </div>
 </template>
@@ -52,6 +43,19 @@
             }
         },
         created () {
+        },
+        computed: {
+            boxStyle () {
+                return (index) => {
+                    const high = index - this.empty === new Date().getDate() ? 'high' : '';
+                    const highLess = index === this.clickIndex ? 'highLess' : '';
+                    return [
+                        'days',
+                        high,
+                        highLess
+                    ]
+                }
+            }
         },
         mounted () {
             // 打印本月的日历
@@ -145,23 +149,6 @@
 </script>
 
 <style scoped>
-    @component-namespace ss {
-        @b aa {
-            width: 300px;
-            height: 100px;
-            background: red;
-            @e bb {
-                width: 200px;
-                height: 200px;
-                background: green;
-                @m cc {
-                    width: 100px;
-                    height: 100px;
-                    background: #ccc;
-                }
-            }
-        }
-    }
     .bigBox {
         width: 650px;
         height: 300px;
@@ -189,6 +176,7 @@
     .title {
         width: 100%;
         height: 30px;
+        margin: 0 0 30px 0;
         overflow: hidden;
     }
     .title .titleYear {

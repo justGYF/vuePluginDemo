@@ -1,6 +1,5 @@
 <template>
   <div class="navs">
-    <p>{{ msg }}</p>
     <ul>
       <li v-for="(item, index) in linkData" @click="linkRouter(index)">{{item.name}}</li>
     </ul>
@@ -8,11 +7,11 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'navs',
   data () {
     return {
-      msg: 'Vue Plugin Demo Link',
       linkData: [
         { name: '日历', value: '/calendar' },
         { name: 'echarts', value: '/echartsDemo' },
@@ -24,6 +23,7 @@ export default {
     }
   },
   mounted () {
+
   },
   methods: {
     linkRouter (val) {
